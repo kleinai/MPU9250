@@ -1,0 +1,1 @@
+vivado -notrace -mode batch -source project.tcl
