@@ -137,7 +137,7 @@ module i2c_master #(
                end
                // Read logic
                if (buf_pointer < 41 && buf_pointer > 5) begin
-                  if (buf_pointer[1:0] == 2'b00) begin
+                  if (clock_counter == 1) begin
                      sda_shift[7:0] <= {sda_shift[6:0], sda_i};
                   end
                end
@@ -147,6 +147,7 @@ module i2c_master #(
                // Next logic for repeated reads
                if (buf_pointer == 9 && last_addr[0]) begin
                   next <= 1;
+                  rdata <= sda_shift;
                end
                // Repeat logic
                else if (buf_pointer == 8 && last_addr[0]) begin
@@ -166,7 +167,6 @@ module i2c_master #(
                         sda_buf[(48+i*4)-1-:4] <= (i != 0)? (addr[i-1]? 4'b1111 : 4'b0000) : (write? 4'b0000 : 4'b1111);
                         sda_buf[(12+i*4)-1-:4] <= write? wdata[i]? 4'b1111 : 4'b0000 : 4'b1111;
                      end
-                     rdata_en <= 1;
                   end
                   else begin
                      sda_buf[7:4] <= 4'b1111;
@@ -180,9 +180,7 @@ module i2c_master #(
                      buf_pointer <= 3;
                   end
                end
-
-               if (rdata_en)
-                    rdata <= sda_shift;
+                    
 
                // Flag error on write nack
                else if (buf_pointer == 5) begin
