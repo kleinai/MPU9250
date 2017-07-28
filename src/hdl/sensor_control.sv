@@ -39,7 +39,7 @@ module sensor_control #
    localparam OP_SLP = 2'b01;
    localparam OP_EXT = 2'b00;
  
-   reg [16:0] CONFIG_ROM [20:0];
+   reg [16:0] CONFIG_ROM [23:0];
    reg [16:0] POLL_ROM [23:0];
    
    reg [63:0] registers [1:0];
@@ -126,40 +126,45 @@ module sensor_control #
       //CONFIG_ROM[ 1] <= {OP_WR, ADDR_MPU9250, 8'h80};
       //CONFIG_ROM[ 2] <= {OP_SLP, 15'h7F};
 
-      // Configure clock source
+      // Reset device
       CONFIG_ROM[ 0] <= {OP_WR, ADDR_MPU9250, 8'd107};
-      CONFIG_ROM[ 1] <= {OP_WR, ADDR_MPU9250, 8'h01};
+      CONFIG_ROM[ 1] <= {OP_WR, ADDR_MPU9250, 8'h70};
       CONFIG_ROM[ 2] <= {OP_SLP, 15'h7F};
 
+      // Configure clock source
+      CONFIG_ROM[ 3] <= {OP_WR, ADDR_MPU9250, 8'd107};
+      CONFIG_ROM[ 4] <= {OP_WR, ADDR_MPU9250, 8'h01};
+      CONFIG_ROM[ 5] <= {OP_SLP, 15'h7F};
+
       // Enable all axis
-      CONFIG_ROM[ 3] <= {OP_WR, ADDR_MPU9250, 8'd108};
-      CONFIG_ROM[ 4] <= {OP_WR, ADDR_MPU9250, 8'h00};
-      CONFIG_ROM[ 5] <= {OP_EXT, {15 {1'b0}}};
+      CONFIG_ROM[ 6] <= {OP_WR, ADDR_MPU9250, 8'd108};
+      CONFIG_ROM[ 7] <= {OP_WR, ADDR_MPU9250, 8'h00};
+      CONFIG_ROM[ 8] <= {OP_EXT, {15 {1'b0}}};
 
       // Clear sample rate divider
-      CONFIG_ROM[ 6] <= {OP_WR, ADDR_MPU9250, 8'd25};
-      CONFIG_ROM[ 7] <= {OP_WR, ADDR_MPU9250, 8'h00};
-      CONFIG_ROM[ 8] <= {OP_EXT, {15, {1'b0}}};
-
-      // Set configuration register
-      CONFIG_ROM[ 9] <= {OP_WR, ADDR_MPU9250, 8'd26};
+      CONFIG_ROM[ 9] <= {OP_WR, ADDR_MPU9250, 8'd25};
       CONFIG_ROM[10] <= {OP_WR, ADDR_MPU9250, 8'h00};
       CONFIG_ROM[11] <= {OP_EXT, {15 {1'b0}}};
 
-      // Set gyroscope configuration
-      CONFIG_ROM[12] <= {OP_WR, ADDR_MPU9250, 8'd27};
-      CONFIG_ROM[13] <= {OP_WR, ADDR_MPU9250, 8'h1B};
+      // Set configuration register
+      CONFIG_ROM[12] <= {OP_WR, ADDR_MPU9250, 8'd26};
+      CONFIG_ROM[13] <= {OP_WR, ADDR_MPU9250, 8'h00};
       CONFIG_ROM[14] <= {OP_EXT, {15 {1'b0}}};
 
-      // Set accelerometer configuration
-      CONFIG_ROM[15] <= {OP_WR, ADDR_MPU9250, 8'd28};
-      CONFIG_ROM[16] <= {OP_WR, ADDR_MPU9250, 8'h08};
+      // Set gyroscope configuration
+      CONFIG_ROM[15] <= {OP_WR, ADDR_MPU9250, 8'd27};
+      CONFIG_ROM[16] <= {OP_WR, ADDR_MPU9250, 8'h1B};
       CONFIG_ROM[17] <= {OP_EXT, {15 {1'b0}}};
 
-      // Set accelerometer configuration 2 register
-      CONFIG_ROM[18] <= {OP_WR, ADDR_MPU9250, 8'd29};
+      // Set accelerometer configuration
+      CONFIG_ROM[18] <= {OP_WR, ADDR_MPU9250, 8'd28};
       CONFIG_ROM[19] <= {OP_WR, ADDR_MPU9250, 8'h08};
       CONFIG_ROM[20] <= {OP_EXT, {15 {1'b0}}};
+
+      // Set accelerometer configuration 2 register
+      CONFIG_ROM[21] <= {OP_WR, ADDR_MPU9250, 8'd29};
+      CONFIG_ROM[22] <= {OP_WR, ADDR_MPU9250, 8'h08};
+      CONFIG_ROM[23] <= {OP_EXT, {15 {1'b0}}};
 
       // Polling ROM. Anything that needs to run everytime we poll the sensor goes here
 
@@ -271,7 +276,7 @@ module sensor_control #
                   multibyte_n <= 0;
                   state <= STATE_TXN_HOLD;
                end
-               else if (next_f && !multibyte_n) begin
+               else if (next && !multibyte_n) begin
                   ram_en <= inst_op[0];
                   ram_addr <= inst_data;
                   ram_data <= rdata;
@@ -306,6 +311,16 @@ module sensor_control #
    end
 
    always_comb begin
-      mm_rdata <= registers[mm_addr[3:1]][((2-mm_addr[0])*32)-1-:32];
+      case (mm_addr[3:1])
+         0: begin
+            mm_rdata <= registers[0][((2-mm_addr[0])*32)-1-:32];
+         end
+         1: begin
+            mm_rdata <= registers[1][((2-mm_addr[0])*32)-1-:32];
+         end
+         2: begin
+            mm_rdata <= {ram_data, 7'h0, mode, rom_ptr};
+         end
+      endcase;
    end
 endmodule
