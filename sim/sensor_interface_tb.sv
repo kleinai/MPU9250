@@ -24,7 +24,8 @@ module sensor_interface_tb();
 
    logic clk;
    logic rst_n;
-   logic clk_en;
+   logic sync;
+   logic interrupt;
    
    logic m00_iic_scl_i;
    logic m00_iic_scl_o;
@@ -38,8 +39,11 @@ module sensor_interface_tb();
    logic s00_axi_rready;
    
    always
-      #5 clk <= !clk;
+      #5 clk <= !clk; // 10 ns period, 100 MHz
    
+   always
+      #250000 sync <= !sync; // 250 us period, 4 kHz
+
    assign (pull1, strong0) m00_iic_scl_i = m00_iic_scl_t? 1 : m00_iic_scl_o;
    assign (pull1, strong0) m00_iic_sda_i = m00_iic_sda_t? 1 : m00_iic_sda_o;
    
@@ -47,7 +51,7 @@ module sensor_interface_tb();
       // Clear clock and reset
       clk <= 0;
       rst_n <= 0;
-      clk_en <= 1;
+      sync <= 0;
       
       // Clear AXI signals
       s00_axi_arvalid <= 0;
@@ -82,7 +86,7 @@ module sensor_interface_tb();
       .m00_iic_scl_i(m00_iic_scl_i),
       .m00_iic_scl_o(m00_iic_scl_o),
       .m00_iic_scl_t(m00_iic_scl_t),
-      .m00_iic_sda_i(m00_iic_sda_i),
+      .m00_iic_sda_i(0 /*m00_iic_sda_i*/),
       .m00_iic_sda_o(m00_iic_sda_o),
       .m00_iic_sda_t(m00_iic_sda_t),
       // AXI signals
@@ -91,7 +95,8 @@ module sensor_interface_tb();
       .s00_axi_arvalid(s00_axi_arvalid),
       .s00_axi_araddr(s00_axi_araddr),
       .s00_axi_rready(s00_axi_rready),
-      .clk_en(clk_en)
+      .sync(sync),
+      .interrupt(interrupt)
    );
 
 endmodule

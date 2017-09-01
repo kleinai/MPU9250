@@ -10,8 +10,8 @@ module sensor_control #
 (
    // Device
    input wire clk,
-   input wire clk_en,
    input wire rst_n,
+   input wire sync,
    output reg interrupt,
    
    // AXI MM
@@ -34,13 +34,14 @@ module sensor_control #
 );
    localparam ADDR_MPU9250     = 7'b1101000;
    localparam ADDR_AK8963      = 7'b0001100;
-   localparam OP_WR  = 2'b10;
-   localparam OP_RD  = 2'b11;
-   localparam OP_SLP = 2'b01;
-   localparam OP_EXT = 2'b00;
+   localparam OP_WR    = 2'b10;
+   localparam OP_RD    = 2'b11;
+   localparam OP_SLP   = 2'b01;
+   localparam OP_EXT   = 2'b00;
+   localparam EXT_SYNC = 4'b0000;
  
    reg [16:0] CONFIG_ROM [23:0];
-   reg [16:0] POLL_ROM [23:0];
+   reg [16:0] POLL_ROM [18:0];
    
    reg [63:0] registers [1:0];
    
@@ -49,16 +50,18 @@ module sensor_control #
 
    logic mode;
 
-   localparam STATE_RESET     = 7'b0000001;
-   localparam STATE_FETCH     = 7'b0000010;
-   localparam STATE_DECODE    = 7'b0000100;
-   localparam STATE_TXN_HOLD  = 7'b0001000;
-   localparam STATE_TXN       = 7'b0010000;
-   localparam STATE_SLEEP     = 7'b0100000;
-   localparam STATE_WAIT      = 7'b1000000;
+   localparam STATE_RESET        = 9'b000000001;
+   localparam STATE_FETCH        = 9'b000000010;
+   localparam STATE_DECODE       = 9'b000000100;
+   localparam STATE_TXN_HOLD     = 9'b000001000;
+   localparam STATE_TXN          = 9'b000010000;
+   localparam STATE_SLEEP        = 9'b000100000;
+   localparam STATE_WAIT_ACT     = 9'b001000000;
+   localparam STATE_EXT_DECODE   = 9'b010000000;
+   localparam STATE_WAIT_SYNC    = 9'b100000000;
 
-   logic [6:0] state;
-   logic [6:0] state_next;
+   logic [8:0] state;
+   logic [8:0] state_next;
 
    logic [7:0] rom_ptr;
    logic [7:0] ROM_MAX_PTR;
@@ -72,9 +75,11 @@ module sensor_control #
    logic [1:0] inst_op;
    logic [6:0] inst_addr;
    logic [7:0] inst_data;
-   assign inst_op = fetched_instruction[16:15];
-   assign inst_addr = fetched_instruction[14:8];
-   assign inst_data = fetched_instruction[7:0];
+   logic [3:0] inst_ext_op;
+   assign inst_op       = fetched_instruction[16:15];
+   assign inst_addr     = fetched_instruction[14:8];
+   assign inst_data     = fetched_instruction[7:0];
+   assign inst_ext_op   = fetched_instruction[14:11];
  
    logic [19:0] sleep_counter;
 
@@ -93,6 +98,8 @@ module sensor_control #
    assign err_f = !err && err_z;
    logic err_r;
    assign err_r = err && !err_z;
+   logic sync_z;
+   assign sync_f = !sync && sync_z;
    
    integer i;
    
@@ -172,41 +179,41 @@ module sensor_control #
        *  TODO: Figure out why the MPU9250 returns invalid data with a multibyte read
        */
 
+      POLL_ROM[ 0]   <= {OP_EXT, EXT_SYNC, 11'b0};
       // Read accel X
-      POLL_ROM[ 0]   <= {OP_WR, ADDR_MPU9250, 8'd59};
-      POLL_ROM[ 1]   <= {OP_RD, ADDR_MPU9250, 8'h00};
-      POLL_ROM[ 2]   <= {OP_RD, ADDR_MPU9250, 8'h01};
-      POLL_ROM[ 3]   <= {OP_EXT, {15 {1'b0}}};
+      POLL_ROM[ 1]   <= {OP_WR, ADDR_MPU9250, 8'd59};
+      POLL_ROM[ 2]   <= {OP_RD, ADDR_MPU9250, 8'h00};
+      POLL_ROM[ 3]   <= {OP_RD, ADDR_MPU9250, 8'h01};
+      //POLL_ROM[ 3]   <= {OP_EXT, {15 {1'b0}}};
       
       // Read accel Y
       POLL_ROM[ 4]   <= {OP_WR, ADDR_MPU9250, 8'd61};
       POLL_ROM[ 5]   <= {OP_RD, ADDR_MPU9250, 8'h02};
       POLL_ROM[ 6]   <= {OP_RD, ADDR_MPU9250, 8'h03};
-      POLL_ROM[ 7]   <= {OP_EXT, {15 {1'b0}}};
+      //POLL_ROM[ 7]   <= {OP_EXT, {15 {1'b0}}};
 
       // Read accel Z
-      POLL_ROM[ 8]   <= {OP_WR, ADDR_MPU9250, 8'd63};
-      POLL_ROM[ 9]   <= {OP_RD, ADDR_MPU9250, 8'h04};
-      POLL_ROM[10]   <= {OP_RD, ADDR_MPU9250, 8'h05};
-      POLL_ROM[11]   <= {OP_EXT, {15 {1'b0}}};
+      POLL_ROM[ 7]   <= {OP_WR, ADDR_MPU9250, 8'd63};
+      POLL_ROM[ 8]   <= {OP_RD, ADDR_MPU9250, 8'h04};
+      POLL_ROM[ 9]   <= {OP_RD, ADDR_MPU9250, 8'h05};
+      //POLL_ROM[11]   <= {OP_EXT, {15 {1'b0}}};
 
       // Read Gyro X
-      POLL_ROM[12]   <= {OP_WR, ADDR_MPU9250, 8'd67};
-      POLL_ROM[13]   <= {OP_RD, ADDR_MPU9250, 8'h08};
-      POLL_ROM[14]   <= {OP_RD, ADDR_MPU9250, 8'h09};
-      POLL_ROM[15]   <= {OP_EXT, {15 {1'b0}}};
+      POLL_ROM[10]   <= {OP_WR, ADDR_MPU9250, 8'd67};
+      POLL_ROM[11]   <= {OP_RD, ADDR_MPU9250, 8'h08};
+      POLL_ROM[12]   <= {OP_RD, ADDR_MPU9250, 8'h09};
+      //POLL_ROM[15]   <= {OP_EXT, {15 {1'b0}}};
 
       // Read Gyro Y
-      POLL_ROM[16]   <= {OP_WR, ADDR_MPU9250, 8'd69};
-      POLL_ROM[17]   <= {OP_RD, ADDR_MPU9250, 8'h0A};
-      POLL_ROM[18]   <= {OP_RD, ADDR_MPU9250, 8'h0B};
-      POLL_ROM[19]   <= {OP_EXT, {15 {1'b0}}};
+      POLL_ROM[13]   <= {OP_WR, ADDR_MPU9250, 8'd69};
+      POLL_ROM[14]   <= {OP_RD, ADDR_MPU9250, 8'h0A};
+      POLL_ROM[15]   <= {OP_RD, ADDR_MPU9250, 8'h0B};
+      //POLL_ROM[19]   <= {OP_EXT, {15 {1'b0}}};
 
       // Ready Gyro Z
-      POLL_ROM[20]   <= {OP_WR, ADDR_MPU9250, 8'd71};
-      POLL_ROM[21]   <= {OP_RD, ADDR_MPU9250, 8'h0C};
-      POLL_ROM[22]   <= {OP_RD, ADDR_MPU9250, 8'h0D};
-      POLL_ROM[23]   <= {OP_EXT, {15 {1'b0}}};
+      POLL_ROM[16]   <= {OP_WR, ADDR_MPU9250, 8'd71};
+      POLL_ROM[17]   <= {OP_RD, ADDR_MPU9250, 8'h0C};
+      POLL_ROM[18]   <= {OP_RD, ADDR_MPU9250, 8'h0D};
    end
    
    always @(posedge clk or negedge rst_n) begin
@@ -224,10 +231,12 @@ module sensor_control #
          ram_data <= 0;
          next_z <= 0;
          err_z <= 0;
+         sync_z <= 0;
       end
       else begin
          next_z <= next;
          err_z <= err;
+         sync_z <= sync;
          ram_en <= 0;
          interrupt <= 0;
          case (state)
@@ -248,10 +257,10 @@ module sensor_control #
             end
             STATE_DECODE: begin
                en <= 0;
-               state <= STATE_WAIT;
+               state <= STATE_WAIT_ACT;
+               state_next <= STATE_FETCH;
                if (inst_op[1]) begin
-                  state <= STATE_TXN_HOLD;
-                  en <= 1;
+                  state_next <= STATE_TXN_HOLD;
                   retries <= 0;
                   {write, addr, wdata} <= {!inst_op[0], inst_addr, inst_data};
                end
@@ -259,10 +268,12 @@ module sensor_control #
                   state_next <= STATE_SLEEP;
                   sleep_counter <= 0;
                end
-               else
-                  state_next <= STATE_FETCH;
+               else if (inst_op == OP_EXT) begin
+                  state_next <= STATE_EXT_DECODE;
+               end
             end
             STATE_TXN_HOLD: begin
+               en <= 1;
                if (next_r || err_r)
                   state <= STATE_TXN;
             end
@@ -289,9 +300,20 @@ module sensor_control #
                if (sleep_counter[$size(sleep_counter)-1-:15] > {inst_addr,inst_data})
                   state <= STATE_FETCH;
             end
-            STATE_WAIT:
+            STATE_EXT_DECODE: begin
+               state <= STATE_FETCH;
+               case (inst_ext_op)
+                  EXT_SYNC: begin
+                     state <= STATE_WAIT_SYNC;
+                  end
+               endcase
+            end
+            STATE_WAIT_ACT:
                if (!act)
                   state <= state_next;
+            STATE_WAIT_SYNC:
+               if (sync_f)
+                  state <= STATE_FETCH;
          endcase
       end
    end
@@ -317,9 +339,6 @@ module sensor_control #
          end
          1: begin
             mm_rdata <= registers[1][((2-mm_addr[0])*32)-1-:32];
-         end
-         2: begin
-            mm_rdata <= {ram_data, 7'h0, mode, rom_ptr};
          end
       endcase;
    end

@@ -27,7 +27,7 @@ module sensor_interface_v1_0 #
    output wire m00_iic_sda_o,
    output wire m00_iic_sda_t,
 
-   input wire clk_en,
+   input wire sync,
    output wire interrupt,
      
    // User ports ends
@@ -70,7 +70,6 @@ module sensor_interface_v1_0 #
    ) sensor_interface_v1_0_S00_AXI_inst (
       // Memory mapped interface
       .clk(s00_axi_aclk),
-      .clk_en(clk_en),
       .mm_en(mm_en),
       .mm_wr(mm_wr),
       .mm_addr(mm_addr),
@@ -117,8 +116,8 @@ module sensor_interface_v1_0 #
    ) sensor_control_inst(
        // Device
       .clk(s00_axi_aclk),
-      .clk_en(clk_en),
       .rst_n(s00_axi_aresetn),
+      .sync(sync),
       .interrupt(interrupt),
       
       // Memory mapped interface

@@ -17,7 +17,6 @@
 		// Users to add ports here
       // Register file signals
       input wire clk,
-			input wire clk_en,
       input wire mm_en,
       input wire mm_wr,
       output reg [C_S_AXI_ADDR_WIDTH-1:0] mm_addr,
@@ -139,7 +138,7 @@
 	      axi_awready <= 1'b0;
 	      aw_en <= 1'b1;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (~axi_awready && S_AXI_AWVALID && S_AXI_WVALID && aw_en)
 	        begin
@@ -172,7 +171,7 @@
 	    begin
 	      axi_awaddr <= 0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (~axi_awready && S_AXI_AWVALID && S_AXI_WVALID && aw_en)
 	        begin
@@ -193,7 +192,7 @@
 	    begin
 	      axi_wready <= 1'b0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (~axi_wready && S_AXI_WVALID && S_AXI_AWVALID && aw_en )
 	        begin
@@ -248,7 +247,7 @@
 	      axi_bvalid  <= 0;
 	      axi_bresp   <= 2'b0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (axi_awready && S_AXI_AWVALID && ~axi_bvalid && axi_wready && S_AXI_WVALID)
 	        begin
@@ -282,7 +281,7 @@
 	      axi_arready <= 1'b0;
 	      axi_araddr  <= 32'b0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (~axi_arready && S_AXI_ARVALID)
 	        begin
@@ -313,7 +312,7 @@
 	      axi_rvalid <= 0;
 	      axi_rresp  <= 0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      if (axi_arready && S_AXI_ARVALID && ~axi_rvalid)
 	        begin
@@ -346,7 +345,7 @@
 	    begin
 	      axi_rdata  <= 0;
 	    end 
-	  else if (clk_en)
+	  else
 	    begin    
 	      // When there is a valid read address (S_AXI_ARVALID) with 
 	      // acceptance of read address by the slave (axi_arready), 
