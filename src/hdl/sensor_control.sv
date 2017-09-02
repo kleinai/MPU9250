@@ -99,7 +99,7 @@ module sensor_control #
    logic err_r;
    assign err_r = err && !err_z;
    logic sync_z;
-   assign sync_f = !sync && sync_z;
+   assign sync_r = sync && !sync_z;
    
    integer i;
    
@@ -304,7 +304,7 @@ module sensor_control #
                if (!act)
                   state <= state_next;
             STATE_WAIT_SYNC:
-               if (sync_f)
+               if (sync_r)
                   state <= STATE_FETCH;
          endcase
       end
