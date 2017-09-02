@@ -42,7 +42,7 @@ module sensor_interface_tb();
       #5 clk <= !clk; // 10 ns period, 100 MHz
    
    always
-      #250000 sync <= !sync; // 250 us period, 4 kHz
+      #500000 sync <= !sync; // 250 us period, 2 kHz
 
    assign (pull1, strong0) m00_iic_scl_i = m00_iic_scl_t? 1 : m00_iic_scl_o;
    assign (pull1, strong0) m00_iic_sda_i = m00_iic_sda_t? 1 : m00_iic_sda_o;

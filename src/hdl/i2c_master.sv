@@ -22,7 +22,7 @@ module i2c_master #(
    output   logic    sda_o          // Serial data out
 );
 
-   localparam CLOCK_DIVIDER_COUNT = SYSTEM_CLOCK/BUS_CLOCK;
+   localparam CLOCK_DIVIDER_COUNT = SYSTEM_CLOCK/BUS_CLOCK/4;
    logic[$clog2(CLOCK_DIVIDER_COUNT)-1:0] clock_divider_counter;
    logic[1:0] clock_counter;
    logic scl_pulse;
