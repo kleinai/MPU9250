@@ -3,21 +3,675 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="i2c_master_tb_behav.wdb" id="1">
+      <db_ref path="sensor_interface_tb_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="i2c_master_tb" />
+            <top_module name="sensor_interface_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="2797131914900fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomStartTime time="367528112132fs"></ZoomStartTime>
+      <ZoomEndTime time="71991959167072fs"></ZoomEndTime>
+      <Cursor1Time time="60000000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="263"></NameColumnWidth>
-      <ValueColumnWidth column_width="67"></ValueColumnWidth>
+      <NameColumnWidth column_width="260"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="0" />
+   <WVObjectSize size="3" />
+   <wvobject type="group" fp_name="group92">
+      <obj_property name="label">UUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_scl_i">
+         <obj_property name="ElementShortName">m00_iic_scl_i</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_scl_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_scl_o">
+         <obj_property name="ElementShortName">m00_iic_scl_o</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_scl_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_scl_t">
+         <obj_property name="ElementShortName">m00_iic_scl_t</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_scl_t</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_sda_i">
+         <obj_property name="ElementShortName">m00_iic_sda_i</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_sda_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_sda_o">
+         <obj_property name="ElementShortName">m00_iic_sda_o</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_sda_o</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/m00_iic_sda_t">
+         <obj_property name="ElementShortName">m00_iic_sda_t</obj_property>
+         <obj_property name="ObjectShortName">m00_iic_sda_t</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sync">
+         <obj_property name="ElementShortName">sync</obj_property>
+         <obj_property name="ObjectShortName">sync</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/interrupt">
+         <obj_property name="ElementShortName">interrupt</obj_property>
+         <obj_property name="ObjectShortName">interrupt</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_aclk">
+         <obj_property name="ElementShortName">s00_axi_aclk</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_aclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_aresetn">
+         <obj_property name="ElementShortName">s00_axi_aresetn</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_aresetn</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_awaddr">
+         <obj_property name="ElementShortName">s00_axi_awaddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awaddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_awprot">
+         <obj_property name="ElementShortName">s00_axi_awprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_awvalid">
+         <obj_property name="ElementShortName">s00_axi_awvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_awready">
+         <obj_property name="ElementShortName">s00_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_wdata">
+         <obj_property name="ElementShortName">s00_axi_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_wstrb">
+         <obj_property name="ElementShortName">s00_axi_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_wvalid">
+         <obj_property name="ElementShortName">s00_axi_wvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_wready">
+         <obj_property name="ElementShortName">s00_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_bresp">
+         <obj_property name="ElementShortName">s00_axi_bresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_bvalid">
+         <obj_property name="ElementShortName">s00_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_bready">
+         <obj_property name="ElementShortName">s00_axi_bready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_bready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_araddr">
+         <obj_property name="ElementShortName">s00_axi_araddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_araddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_arprot">
+         <obj_property name="ElementShortName">s00_axi_arprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_arvalid">
+         <obj_property name="ElementShortName">s00_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_arready">
+         <obj_property name="ElementShortName">s00_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_rdata">
+         <obj_property name="ElementShortName">s00_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/s00_axi_rresp">
+         <obj_property name="ElementShortName">s00_axi_rresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_rvalid">
+         <obj_property name="ElementShortName">s00_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/s00_axi_rready">
+         <obj_property name="ElementShortName">s00_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_rready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/mm_en">
+         <obj_property name="ElementShortName">mm_en</obj_property>
+         <obj_property name="ObjectShortName">mm_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/mm_wr">
+         <obj_property name="ElementShortName">mm_wr</obj_property>
+         <obj_property name="ObjectShortName">mm_wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/mm_addr">
+         <obj_property name="ElementShortName">mm_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/mm_rdata">
+         <obj_property name="ElementShortName">mm_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_en">
+         <obj_property name="ElementShortName">i2c_en</obj_property>
+         <obj_property name="ObjectShortName">i2c_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/i2c_addr">
+         <obj_property name="ElementShortName">i2c_addr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">i2c_addr[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_write">
+         <obj_property name="ElementShortName">i2c_write</obj_property>
+         <obj_property name="ObjectShortName">i2c_write</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/i2c_wdata">
+         <obj_property name="ElementShortName">i2c_wdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i2c_wdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/i2c_rdata">
+         <obj_property name="ElementShortName">i2c_rdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i2c_rdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_act">
+         <obj_property name="ElementShortName">i2c_act</obj_property>
+         <obj_property name="ObjectShortName">i2c_act</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_err">
+         <obj_property name="ElementShortName">i2c_err</obj_property>
+         <obj_property name="ObjectShortName">i2c_err</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_next">
+         <obj_property name="ElementShortName">i2c_next</obj_property>
+         <obj_property name="ObjectShortName">i2c_next</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_multibyte_n">
+         <obj_property name="ElementShortName">i2c_multibyte_n</obj_property>
+         <obj_property name="ObjectShortName">i2c_multibyte_n</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/i2c_ena">
+         <obj_property name="ElementShortName">i2c_ena</obj_property>
+         <obj_property name="ObjectShortName">i2c_ena</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/C_SYSTEM_CLOCK">
+         <obj_property name="ElementShortName">C_SYSTEM_CLOCK[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_SYSTEM_CLOCK[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/C_BUS_CLOCK">
+         <obj_property name="ElementShortName">C_BUS_CLOCK[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_BUS_CLOCK[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/C_S00_AXI_DATA_WIDTH">
+         <obj_property name="ElementShortName">C_S00_AXI_DATA_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_S00_AXI_DATA_WIDTH[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/C_S00_AXI_ADDR_WIDTH">
+         <obj_property name="ElementShortName">C_S00_AXI_ADDR_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_S00_AXI_ADDR_WIDTH[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group140">
+      <obj_property name="label">Sensor Interface AXI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/mm_en">
+         <obj_property name="ElementShortName">mm_en</obj_property>
+         <obj_property name="ObjectShortName">mm_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/mm_wr">
+         <obj_property name="ElementShortName">mm_wr</obj_property>
+         <obj_property name="ObjectShortName">mm_wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/mm_addr">
+         <obj_property name="ElementShortName">mm_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/mm_wdata">
+         <obj_property name="ElementShortName">mm_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/mm_rdata">
+         <obj_property name="ElementShortName">mm_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ACLK">
+         <obj_property name="ElementShortName">S_AXI_ACLK</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ACLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ARESETN">
+         <obj_property name="ElementShortName">S_AXI_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARESETN</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_AWADDR">
+         <obj_property name="ElementShortName">S_AXI_AWADDR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWADDR[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_AWPROT">
+         <obj_property name="ElementShortName">S_AXI_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_AWVALID">
+         <obj_property name="ElementShortName">S_AXI_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_AWREADY">
+         <obj_property name="ElementShortName">S_AXI_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_WDATA">
+         <obj_property name="ElementShortName">S_AXI_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_WSTRB">
+         <obj_property name="ElementShortName">S_AXI_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_WVALID">
+         <obj_property name="ElementShortName">S_AXI_WVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_WREADY">
+         <obj_property name="ElementShortName">S_AXI_WREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_BRESP">
+         <obj_property name="ElementShortName">S_AXI_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_BVALID">
+         <obj_property name="ElementShortName">S_AXI_BVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_BREADY">
+         <obj_property name="ElementShortName">S_AXI_BREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ARADDR">
+         <obj_property name="ElementShortName">S_AXI_ARADDR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARADDR[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ARPROT">
+         <obj_property name="ElementShortName">S_AXI_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ARVALID">
+         <obj_property name="ElementShortName">S_AXI_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_ARREADY">
+         <obj_property name="ElementShortName">S_AXI_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_RDATA">
+         <obj_property name="ElementShortName">S_AXI_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_RRESP">
+         <obj_property name="ElementShortName">S_AXI_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_RVALID">
+         <obj_property name="ElementShortName">S_AXI_RVALID</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/S_AXI_RREADY">
+         <obj_property name="ElementShortName">S_AXI_RREADY</obj_property>
+         <obj_property name="ObjectShortName">S_AXI_RREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_awaddr">
+         <obj_property name="ElementShortName">axi_awaddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_awaddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_awready">
+         <obj_property name="ElementShortName">axi_awready</obj_property>
+         <obj_property name="ObjectShortName">axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_wready">
+         <obj_property name="ElementShortName">axi_wready</obj_property>
+         <obj_property name="ObjectShortName">axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_bresp">
+         <obj_property name="ElementShortName">axi_bresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_bresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_bvalid">
+         <obj_property name="ElementShortName">axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_araddr">
+         <obj_property name="ElementShortName">axi_araddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_araddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_arready">
+         <obj_property name="ElementShortName">axi_arready</obj_property>
+         <obj_property name="ObjectShortName">axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_rdata">
+         <obj_property name="ElementShortName">axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_rresp">
+         <obj_property name="ElementShortName">axi_rresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">axi_rresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/axi_rvalid">
+         <obj_property name="ElementShortName">axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/reg_file">
+         <obj_property name="ElementShortName">reg_file[31:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_file[31:0][7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/slv_reg_rden">
+         <obj_property name="ElementShortName">slv_reg_rden</obj_property>
+         <obj_property name="ObjectShortName">slv_reg_rden</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/slv_reg_wren">
+         <obj_property name="ElementShortName">slv_reg_wren</obj_property>
+         <obj_property name="ObjectShortName">slv_reg_wren</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/reg_data_out">
+         <obj_property name="ElementShortName">reg_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_data_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/byte_index">
+         <obj_property name="ElementShortName">byte_index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">byte_index[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/aw_en">
+         <obj_property name="ElementShortName">aw_en</obj_property>
+         <obj_property name="ObjectShortName">aw_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/C_S_AXI_DATA_WIDTH">
+         <obj_property name="ElementShortName">C_S_AXI_DATA_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_S_AXI_DATA_WIDTH[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/C_S_AXI_ADDR_WIDTH">
+         <obj_property name="ElementShortName">C_S_AXI_ADDR_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_S_AXI_ADDR_WIDTH[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/ADDR_LSB">
+         <obj_property name="ElementShortName">ADDR_LSB[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ADDR_LSB[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_interface_v1_0_S00_AXI_inst/OPT_MEM_ADDR_BITS">
+         <obj_property name="ElementShortName">OPT_MEM_ADDR_BITS[31:0]</obj_property>
+         <obj_property name="ObjectShortName">OPT_MEM_ADDR_BITS[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group207">
+      <obj_property name="label">Sensor Control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/rst_n">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/sync">
+         <obj_property name="ElementShortName">sync</obj_property>
+         <obj_property name="ObjectShortName">sync</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/interrupt">
+         <obj_property name="ElementShortName">interrupt</obj_property>
+         <obj_property name="ObjectShortName">interrupt</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mm_en">
+         <obj_property name="ElementShortName">mm_en</obj_property>
+         <obj_property name="ObjectShortName">mm_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mm_wr">
+         <obj_property name="ElementShortName">mm_wr</obj_property>
+         <obj_property name="ObjectShortName">mm_wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mm_addr">
+         <obj_property name="ElementShortName">mm_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mm_wdata">
+         <obj_property name="ElementShortName">mm_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mm_rdata">
+         <obj_property name="ElementShortName">mm_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mm_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/en">
+         <obj_property name="ElementShortName">en</obj_property>
+         <obj_property name="ObjectShortName">en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/addr">
+         <obj_property name="ElementShortName">addr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/write">
+         <obj_property name="ElementShortName">write</obj_property>
+         <obj_property name="ObjectShortName">write</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/wdata">
+         <obj_property name="ElementShortName">wdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">wdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/rdata">
+         <obj_property name="ElementShortName">rdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/act">
+         <obj_property name="ElementShortName">act</obj_property>
+         <obj_property name="ObjectShortName">act</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/err">
+         <obj_property name="ElementShortName">err</obj_property>
+         <obj_property name="ObjectShortName">err</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/next">
+         <obj_property name="ElementShortName">next</obj_property>
+         <obj_property name="ObjectShortName">next</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/multibyte_n">
+         <obj_property name="ElementShortName">multibyte_n</obj_property>
+         <obj_property name="ObjectShortName">multibyte_n</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/CONFIG_ROM">
+         <obj_property name="ElementShortName">CONFIG_ROM[23:0][16:0]</obj_property>
+         <obj_property name="ObjectShortName">CONFIG_ROM[23:0][16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/POLL_ROM">
+         <obj_property name="ElementShortName">POLL_ROM[13:0][16:0]</obj_property>
+         <obj_property name="ObjectShortName">POLL_ROM[13:0][16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/registers">
+         <obj_property name="ElementShortName">registers[1:0][63:0]</obj_property>
+         <obj_property name="ObjectShortName">registers[1:0][63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/mode">
+         <obj_property name="ElementShortName">mode</obj_property>
+         <obj_property name="ObjectShortName">mode</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/state">
+         <obj_property name="ElementShortName">state[8:0]</obj_property>
+         <obj_property name="ObjectShortName">state[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/state_next">
+         <obj_property name="ElementShortName">state_next[8:0]</obj_property>
+         <obj_property name="ObjectShortName">state_next[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/rom_ptr">
+         <obj_property name="ElementShortName">rom_ptr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rom_ptr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ROM_MAX_PTR">
+         <obj_property name="ElementShortName">ROM_MAX_PTR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ROM_MAX_PTR[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/fetched_instruction">
+         <obj_property name="ElementShortName">fetched_instruction[16:0]</obj_property>
+         <obj_property name="ObjectShortName">fetched_instruction[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/next_instruction">
+         <obj_property name="ElementShortName">next_instruction[16:0]</obj_property>
+         <obj_property name="ObjectShortName">next_instruction[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/retries">
+         <obj_property name="ElementShortName">retries[2:0]</obj_property>
+         <obj_property name="ObjectShortName">retries[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/inst_op">
+         <obj_property name="ElementShortName">inst_op[1:0]</obj_property>
+         <obj_property name="ObjectShortName">inst_op[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/inst_addr">
+         <obj_property name="ElementShortName">inst_addr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">inst_addr[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/inst_data">
+         <obj_property name="ElementShortName">inst_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">inst_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/inst_ext_op">
+         <obj_property name="ElementShortName">inst_ext_op[3:0]</obj_property>
+         <obj_property name="ObjectShortName">inst_ext_op[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/sleep_counter">
+         <obj_property name="ElementShortName">sleep_counter[19:0]</obj_property>
+         <obj_property name="ObjectShortName">sleep_counter[19:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ram_en">
+         <obj_property name="ElementShortName">ram_en</obj_property>
+         <obj_property name="ObjectShortName">ram_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ram_addr">
+         <obj_property name="ElementShortName">ram_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ram_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ram_data">
+         <obj_property name="ElementShortName">ram_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ram_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/next_z">
+         <obj_property name="ElementShortName">next_z</obj_property>
+         <obj_property name="ObjectShortName">next_z</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/next_f">
+         <obj_property name="ElementShortName">next_f</obj_property>
+         <obj_property name="ObjectShortName">next_f</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/next_r">
+         <obj_property name="ElementShortName">next_r</obj_property>
+         <obj_property name="ObjectShortName">next_r</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/err_z">
+         <obj_property name="ElementShortName">err_z</obj_property>
+         <obj_property name="ObjectShortName">err_z</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/err_f">
+         <obj_property name="ElementShortName">err_f</obj_property>
+         <obj_property name="ObjectShortName">err_f</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/err_r">
+         <obj_property name="ElementShortName">err_r</obj_property>
+         <obj_property name="ObjectShortName">err_r</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/sync_z">
+         <obj_property name="ElementShortName">sync_z</obj_property>
+         <obj_property name="ObjectShortName">sync_z</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/i">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/sync_r">
+         <obj_property name="ElementShortName">sync_r</obj_property>
+         <obj_property name="ObjectShortName">sync_r</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/C_SYSTEM_CLOCK">
+         <obj_property name="ElementShortName">C_SYSTEM_CLOCK[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_SYSTEM_CLOCK[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/C_ADDR_WIDTH">
+         <obj_property name="ElementShortName">C_ADDR_WIDTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">C_ADDR_WIDTH[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ADDR_MPU9250">
+         <obj_property name="ElementShortName">ADDR_MPU9250[6:0]</obj_property>
+         <obj_property name="ObjectShortName">ADDR_MPU9250[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/ADDR_AK8963">
+         <obj_property name="ElementShortName">ADDR_AK8963[6:0]</obj_property>
+         <obj_property name="ObjectShortName">ADDR_AK8963[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/OP_WR">
+         <obj_property name="ElementShortName">OP_WR[1:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_WR[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/OP_RD">
+         <obj_property name="ElementShortName">OP_RD[1:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_RD[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/OP_SLP">
+         <obj_property name="ElementShortName">OP_SLP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_SLP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/OP_EXT">
+         <obj_property name="ElementShortName">OP_EXT[1:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_EXT[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/EXT_SYNC">
+         <obj_property name="ElementShortName">EXT_SYNC[3:0]</obj_property>
+         <obj_property name="ObjectShortName">EXT_SYNC[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/MODE_CONFIGURE">
+         <obj_property name="ElementShortName">MODE_CONFIGURE</obj_property>
+         <obj_property name="ObjectShortName">MODE_CONFIGURE</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/sensor_interface_tb/uut/sensor_control_inst/MODE_POLL">
+         <obj_property name="ElementShortName">MODE_POLL</obj_property>
+         <obj_property name="ObjectShortName">MODE_POLL</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_RESET">
+         <obj_property name="ElementShortName">STATE_RESET[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_RESET[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_FETCH">
+         <obj_property name="ElementShortName">STATE_FETCH[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_FETCH[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_DECODE">
+         <obj_property name="ElementShortName">STATE_DECODE[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_DECODE[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_TXN_HOLD">
+         <obj_property name="ElementShortName">STATE_TXN_HOLD[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_TXN_HOLD[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_TXN">
+         <obj_property name="ElementShortName">STATE_TXN[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_TXN[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_SLEEP">
+         <obj_property name="ElementShortName">STATE_SLEEP[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_SLEEP[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_WAIT_ACT">
+         <obj_property name="ElementShortName">STATE_WAIT_ACT[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_WAIT_ACT[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_EXT_DECODE">
+         <obj_property name="ElementShortName">STATE_EXT_DECODE[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_EXT_DECODE[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/sensor_interface_tb/uut/sensor_control_inst/STATE_WAIT_SYNC">
+         <obj_property name="ElementShortName">STATE_WAIT_SYNC[8:0]</obj_property>
+         <obj_property name="ObjectShortName">STATE_WAIT_SYNC[8:0]</obj_property>
+      </wvobject>
+   </wvobject>
 </wave_config>
