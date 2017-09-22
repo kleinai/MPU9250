@@ -41,7 +41,7 @@ module sensor_control #
    localparam EXT_SYNC = 4'b0000;
  
    reg [16:0] CONFIG_ROM [23:0];
-   reg [16:0] POLL_ROM [13:0];
+   reg [16:0] POLL_ROM [14:0];
    
    reg [63:0] registers [1:0];
    
@@ -191,21 +191,21 @@ module sensor_control #
       //POLL_ROM[11]   <= {OP_EXT, {15 {1'b0}}};
 
       // Read Gyro X
-      //POLL_ROM[10]   <= {OP_WR, ADDR_MPU9250, 8'd67};
-      POLL_ROM[ 8]   <= {OP_RD, ADDR_MPU9250, 8'h08};
-      POLL_ROM[ 9]   <= {OP_RD, ADDR_MPU9250, 8'h09};
+      POLL_ROM[ 8]   <= {OP_WR, ADDR_MPU9250, 8'd67};
+      POLL_ROM[ 9]   <= {OP_RD, ADDR_MPU9250, 8'h08};
+      POLL_ROM[10]   <= {OP_RD, ADDR_MPU9250, 8'h09};
       //POLL_ROM[14]   <= {OP_EXT, {15 {1'b0}}};
 
       // Read Gyro Y
       //POLL_ROM[13]   <= {OP_WR, ADDR_MPU9250, 8'd69};
-      POLL_ROM[10]   <= {OP_RD, ADDR_MPU9250, 8'h0A};
-      POLL_ROM[11]   <= {OP_RD, ADDR_MPU9250, 8'h0B};
+      POLL_ROM[11]   <= {OP_RD, ADDR_MPU9250, 8'h0A};
+      POLL_ROM[12]   <= {OP_RD, ADDR_MPU9250, 8'h0B};
       //POLL_ROM[17]   <= {OP_EXT, {15 {1'b0}}};
 
       // Ready Gyro Z
       //POLL_ROM[12]   <= {OP_WR, ADDR_MPU9250, 8'd71};
-      POLL_ROM[12]   <= {OP_RD, ADDR_MPU9250, 8'h0C};
-      POLL_ROM[13]   <= {OP_RD, ADDR_MPU9250, 8'h0D};
+      POLL_ROM[13]   <= {OP_RD, ADDR_MPU9250, 8'h0C};
+      POLL_ROM[14]   <= {OP_RD, ADDR_MPU9250, 8'h0D};
    end
    
    always @(posedge clk or negedge rst_n) begin
