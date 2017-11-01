@@ -171,7 +171,8 @@ module sensor_control #
 
       // Polling ROM. Anything that needs to run everytime we poll the sensor goes here
 
-      POLL_ROM[ 0]   <= {OP_EXT, EXT_SYNC, 11'b0};
+      // Disable sync pulse requirement, free run
+      POLL_ROM[ 0]   <= 0; // {OP_EXT, EXT_SYNC, 11'b0};
       // Read accel X
       POLL_ROM[ 1]   <= {OP_WR, ADDR_MPU9250, 8'd59};
       POLL_ROM[ 2]   <= {OP_RD, ADDR_MPU9250, 8'h00};
